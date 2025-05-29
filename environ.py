@@ -82,10 +82,10 @@ def isvalidmove(board, y1, x1, y2, x2):
         return True
 
     # adriv
-    if (dy, dx) == (3, 0) and board[y1+1][x2] == 1 \
-            or (dy, dx) == (-3, 0) and board[y1-1][x2] == 1 \
-            or (dy, dx) == (0, 3) and board[y1][x2+1] == 1 \
-            or (dy, dx) == (0, -3) and board[y1][x2-1] == 1:
+    if (dy, dx) == (3, 0) and board[y1+1][x1] == 1 \
+            or (dy, dx) == (-3, 0) and board[y1-1][x1] == 1 \
+            or (dy, dx) == (0, 3) and board[y1][x1+1] == 1 \
+            or (dy, dx) == (0, -3) and board[y1][x1-1] == 1:
         return True
 
     return False
