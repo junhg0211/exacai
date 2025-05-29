@@ -89,7 +89,7 @@ def learn(q, a, g):
     turn = 0
 
     while True:
-        if time() > recordtime + 60:
+        if time() > recordtime + 600:
             dumpq(q)
             recordtime = time()
 
