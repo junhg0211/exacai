@@ -37,7 +37,7 @@ def getq(q, state, move):
 
 
 def getbestmove(q, board):
-    return max(range(7**4), key=lambda i: getq(q, board, i) + random() / 15)
+    return max(range(7**4), key=lambda i: getq(q, board, i) + random() * 0.1)
 
 
 def learn(q, a, g):
@@ -62,9 +62,21 @@ def learn(q, a, g):
             print("Newgame")
             continue
 
-        rate = 0
+        rate = 2
         if board[y2][x2] == 2:
             rate += 10
+        n1 = 0
+        n2 = 0
+        for i in range(7):
+            for j in range(7):
+                if board[i][j] == 1:
+                    n1 += 1
+                if board[i][j] == 2:
+                    n2 += 1
+        if n2 == 0:
+            rate = 1e300
+        if n1 == 0:
+            rate = -1e300
 
         newboard = flipopponent(applymove(board, *hashtomove(bm)))
         nbh = boardhash(newboard)
@@ -78,4 +90,4 @@ def learn(q, a, g):
 
 
 if __name__ == "__main__":
-    learn(loadq(), 0.1, 0.1)
+    learn(loadq(), 0.1, 0.4)
