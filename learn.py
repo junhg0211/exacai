@@ -55,9 +55,9 @@ def doonce(q, bh, a, g):
 
         break
 
-    rate = 1
+    rate = 0
     if board[y2][x2] == 2:
-        rate += 1
+        rate += 2
     n1 = 0
     n2 = 0
     for i in range(7):
