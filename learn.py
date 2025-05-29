@@ -85,6 +85,7 @@ def learn(q, a, g):
     board = createboard()
     bh = boardhash(board)
     recordtime = time()
+    game = 0
     turn = 0
 
     while True:
@@ -92,6 +93,7 @@ def learn(q, a, g):
             dumpq(q)
             recordtime = time()
 
+        print("#", game, "(", turn, ")")
         printboard(board if turn % 2 else flipopponent(board))
         turn += 1
 
@@ -113,6 +115,8 @@ def learn(q, a, g):
         if n1 == 0 or n2 == 0:
             board = createboard()
             bh = boardhash(board)
+            turn = 1
+            game += 1
 
 
 if __name__ == "__main__":
