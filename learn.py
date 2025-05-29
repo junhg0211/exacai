@@ -50,16 +50,15 @@ def learn(q, a, g):
             dumpq(q)
             recordtime = time()
 
-        printboard(board)
         bm = getbestmove(q, bh)
-        print(hashtomove(bm), getq(q, bh, bm))
+        print(bh, bm, getq(q, bh, bm))
         y1, x1, y2, x2 = hashtomove(bm)
         
         if not isvalidmove(board, *hashtomove(bm)):
             updateq(q, bh, bm, -1e300)
             board = createboard()
             bh = boardhash(board)
-            print("Newgame")
+            print("  Newgame")
             continue
 
         rate = 2
