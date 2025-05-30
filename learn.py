@@ -1,24 +1,21 @@
 from random import random
 from time import time
-from json import load, dump
+from pickle import load, dump
 
 from environ import *
 
 
-def loadq(filename="q.json"):
+def loadq(filename="q.pickle"):
     try:
-        with open(filename, "r") as file:
+        with open(filename, "rb") as file:
             q = load(file)
     except:
         q = {}
-    for k, v in list(q.items()):
-        del q[k]
-        q[int(k)] = v
     return q
 
 
-def dumpq(q, filename="q.json"):
-    with open(filename, "w") as file:
+def dumpq(q, filename="q.pickle"):
+    with open(filename, "wb") as file:
         dump(q, file)
 
 
