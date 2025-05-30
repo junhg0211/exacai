@@ -84,14 +84,10 @@ def doonce(q, bh, a, g):
 def learn(q, a, g):
     board = createboard()
     bh = boardhash(board)
-    recordtime = time()
     game = 0
     turn = 0
 
     while True:
-        if time() > recordtime + 600:
-            dumpq(q)
-            recordtime = time()
 
         print("#", game, "(", turn, ")")
         printboard(board if turn % 2 else flipopponent(board))
@@ -117,6 +113,8 @@ def learn(q, a, g):
             bh = boardhash(board)
             turn = 1
             game += 1
+
+            dumpq(q)
 
 
 if __name__ == "__main__":
