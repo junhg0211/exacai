@@ -63,9 +63,9 @@ def doonce(q, bh, a, g):
                 n1 += 1
             if board[i][j] == 2:
                 n2 += 1
-    if n2 == 0:
+    if n2 == 1:
         rate = 1e300
-    if n1 == 0:
+    if n1 == 1:
         rate = -1e300
 
     newboard = flipopponent(applymove(board, *hashtomove(bm)))
@@ -105,7 +105,7 @@ def learn(q, a, g):
                 if board[i][j] == 2:
                     n2 += 1
 
-        if n1 == 0 or n2 == 0:
+        if n1 == 1 or n2 == 1:
             board = createboard()
             bh = boardhash(board)
             turn = 1
