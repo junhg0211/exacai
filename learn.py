@@ -16,7 +16,7 @@ def loadq(filename="q.pickle"):
 
 
 def dumpq(q, filename="q.pickle"):
-    system(f"cp {filename} b.pickle")
+    system(f"mv {filename} b.pickle")
     with open(filename, "wb") as file:
         dump(q, file)
 
