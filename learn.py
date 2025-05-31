@@ -1,6 +1,7 @@
 from random import random
 from time import time
 from pickle import load, dump
+from os import system
 
 from environ import *
 
@@ -15,8 +16,10 @@ def loadq(filename="q.pickle"):
 
 
 def dumpq(q, filename="q.pickle"):
+    system(f"cp {filename} b.pickle")
     with open(filename, "wb") as file:
         dump(q, file)
+
 
 
 def updateq(q, state, move, value):
